@@ -1,0 +1,315 @@
+.main-container {
+    width: 980px;
+    margin:auto;
+    border: 0px;
+}
+
+.main-container h1 {
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.column {
+    box-sizing: border-box;
+    width: 350px;
+    padding: 5px;
+    padding-top: 15px;
+}
+
+.board {
+    box-sizing: border-box;
+    width: 600px;
+    height: 600px;
+    overflow: hidden;    
+    margin: 15px;
+/*    border-right: 1px solid black;
+    border-bottom: 1px solid black;*/
+}
+
+.main-grid, .mini-grid {
+    width: 600px;
+/*    border-top: 1px solid black;
+    border-left: 1px solid black;*/
+    position: relative;
+}
+
+.main-grid div, .mini-grid div {
+    box-sizing: border-box;
+}
+
+.row {
+    border: 0;
+/*    border-bottom: 1px solid black;*/
+    height: 60px;
+}
+
+.cell {
+    float: left;
+    width: 60px;
+    height: 60px;
+    /*border: 0;*/
+    border: 1px solid black;
+    text-align: center;
+    margin: auto;
+    font-size: 3rem;
+    overflow: hidden;
+}
+
+@keyframes explosion {
+    0% {
+        transform: scale(2);
+        opacity: 1;
+        background-color: yellow;
+        box-shadow: 0 0 10px 10px yellow, 0 0 20px 20px orange;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+        background-color: red;
+        box-shadow: 0 0 5px 5px red, 0 0 10px 10px red;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        background-color: yellow;
+        box-shadow: none;
+    }
+}
+
+@keyframes missed {
+    0% {
+        transform: scale(2);
+        opacity: 1;
+        background-color: darkblue;
+        box-shadow: 0 0 10px 10px dodgerblue, 0 0 20px 20px white;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+        background-color: darkblue;
+        box-shadow: 0 0 5px 5px dodgerblue, 0 0 10px 10px white;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        background-color: dodgerblue;
+        box-shadow: none;
+    }
+}
+
+.explode {
+    animation-name: explosion;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.miss {
+    animation-name: missed;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.mini-grid {
+    transform: scale(0.5) translateX(-250px);
+    margin-top: -150px;
+}
+
+.game-info {
+    overflow: auto;
+    width: 100%;
+    height: 115px;
+    text-align: center;
+}
+
+
+#confirm {
+    text-align: center;
+    display: none;
+}
+
+.btn-container {
+    display: inline-block;
+}
+
+.btn-container .btn {
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-container .confirm-ok {
+    background-color: green;
+}
+
+.btn-container .confirm-cancel {
+    background-color: red;
+}
+
+.fleet {
+    text-align: center;
+    margin-top : 10px;
+}
+
+.ship {
+    background-image: url('../img/battleship-target-3.gif');
+    background-size: 100% auto;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.ship.battleship {
+    background-position: 0 0 ;
+}
+
+.ship.destroyer {
+    background-position: 0 100px;
+}
+
+.ship.submarine {
+    background-position: 0 153px;
+}
+
+.ship.small-ship {
+    background-position: 0 53px;
+}
+
+.ship.sunk {
+    opacity: 0.1;
+}
+
+/*          Start game button           */
+
+#startSelection {
+    border: 3px solid black;
+    height: 4rem;
+}
+
+#startSelection label,  #startSelection button{
+    margin: 0 20px 0 20px;
+}
+
+#startSelection button {
+    background: white;
+    border: solid 1px black;
+    padding: .375em 1.125em;
+    font-size: .8rem;
+}
+
+#startSelection button {
+    font-size: 1rem;
+    background: hsl(190deg, 30%, 15%);
+    color: hsl(190deg, 10%, 95%);
+
+    box-shadow: 0 0px 0px hsla(190deg, 15%, 5%, .2);
+    transfrom: translateY(0);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    --dur: .15s;
+    --delay: .15s;
+    --radius: 16px;
+
+    transition:
+            border-top-left-radius var(--dur) var(--delay) ease-out,
+            border-top-right-radius var(--dur) calc(var(--delay) * 2) ease-out,
+            border-bottom-right-radius var(--dur) calc(var(--delay) * 3) ease-out,
+            border-bottom-left-radius var(--dur) calc(var(--delay) * 4) ease-out,
+            box-shadow calc(var(--dur) * 4) ease-out,
+            transform calc(var(--dur) * 4) ease-out,
+            background calc(var(--dur) * 4) steps(4, jump-end);
+}
+
+#startSelection button:hover,
+#startSelection button:hover {
+    box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
+    background: hsl(230deg, 50%, 45%);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+}
+
+
+#confirm {
+    text-align: center;
+    display: none;
+}
+
+.btn-container {
+    display: inline-block;
+}
+
+.btn-container .btn {
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-container .confirm-ok {
+    background-color: green;
+}
+
+.btn-container .confirm-cancel {
+    background-color: red;
+}
+
+#gameOverPhase {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+
+    display: none;
+}
+
+.container-gameover {
+    z-index: 99;
+    background-color: #414040;
+    width: 30%;
+    height: 50%;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vh;
+}
+.container-gameover #namewin {
+    font-size: 3vh;
+    color: white;
+}
+#resetGame {
+    background-color: white;
+    border: none;
+    padding: 1vw 1.5vw;
+    border-radius: 10px;
+    transition: all .3s;
+}
+#resetGame:hover {
+    transform: scale(.95);
+}
