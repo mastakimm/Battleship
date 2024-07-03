@@ -14,3 +14,15 @@ This project involves taking over and completing an unfinished codebase left by 
     JSLint Compliance: Ensure all submitted code is JSLint valid (http://www.jslint.com/).
     Header Directives: Do not change the header directives in the files unless absolutely necessary and justifiable.
     Code Understanding: Be prepared to explain any part of the code during the presentation.
+
+
+## If you want to try it on your own :
+### Clone the project:
+With HTTPS: git clone 'https://github.com/mastakimm/Battleship.git'
+<br>
+With SSH: git clone 'git@github.com:mastakimm/Battleship.git'
+
+### Start the Project :
+Double click on index.html
+
+Start playing !
